@@ -15,19 +15,18 @@ classifiers = [
     "Framework :: Flask",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Intended Audience :: Developers",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-requires-python = ">=3.7"
+requires-python = ">=3.9"
 dependencies = [
     "flask >=3.0.0",
-    "supabase >=1.0.0",
+    "supabase >=2.0.0",
 ]
 
 [project.urls]
@@ -38,7 +37,7 @@ name = "flask_supabase"
 
 [tool.ruff]
 line-length = 100
-target-version = "py37"
+target-version = "py39"
 
 [tool.ruff.lint]
 select = [
