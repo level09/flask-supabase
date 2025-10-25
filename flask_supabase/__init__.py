@@ -43,8 +43,10 @@ class Supabase:
                 raise
         return g.supabase_client
 
-    def get_user(self):
-        return self.client.auth.get_user()
+    def get_user(self, jwt=None):
+        if not jwt:
+            return self.client.auth.get_user()
+        return self.client.auth.get_user(jwt)
 
     def sign_in_with_oauth(self, provider):
         return self.client.auth.sign_in_with_oauth({"provider": provider})
