@@ -36,11 +36,19 @@ class Supabase:
         app.teardown_appcontext(self.teardown)
 
     def teardown(self, exception):
+        """Clean up the Supabase client on app context teardown.
+
+        Args:
+            exception: Exception that occurred during request processing, if any.
+        """
         client = g.pop("supabase_client", None)
         if client is not None:
-            # Perform any necessary cleanup for the Supabase client
-            # Note: As of now, the Supabase Python client doesn't require explicit cleanup
-            pass
+            try:
+                # Properly sign out to clean up auth session
+                client.auth.sign_out()
+            except Exception:
+                # Silently ignore cleanup errors to prevent cascading failures
+                pass
 
     @property
     def client(self) -> Client:
